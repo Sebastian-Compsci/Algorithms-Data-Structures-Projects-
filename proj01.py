@@ -1,21 +1,13 @@
 """
 Project 1 - Doubly Linked Lists
-CSE 331 SS25
 """
 
 from __future__ import annotations
 from typing import List, TypeVar, Tuple, Optional
 
-# for more information on type hinting, check out https://docs.python.org/3/library/typing.html
 T = TypeVar("T")  # represents generic type
 Node = TypeVar("Node")  # represents a Node object (forward-declare to use in Node __init__)
 DLL = TypeVar("DLL")
-
-# pro tip: PyCharm auto-renders docstrings (the multiline strings under each function definition)
-# in its "Documentation" view when written in the format we use here. Open the "Documentation"
-# view to quickly see what a function does by placing your cursor on it and using CTRL + Q.
-# https://www.jetbrains.com/help/pycharm/documentation-tool-window.html
-
 
 class Node:
     """
