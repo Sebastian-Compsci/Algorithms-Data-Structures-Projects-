@@ -2,6 +2,8 @@ Assignment Overview
 Doubly linked lists (DLLs) are a fundamental data structure used to store sequential information. DLLs consist of a chain of nodes linked to one another by forward and backward references, such that one may traverse the chain from the head to the tail, or vice-versa. Each node stores a value, which may be a number, string, or more complex object.
 Traditional arrays provide a simpler means for storing sequential information, but come with a major drawback which DLLs avoid: arrays require contiguous blocks of memory, while DLLs may utilize memory wherever it is available. In settings where data is updated, manipulated or deleted frequently, DLLs outperform traditional arrays by avoiding the need for memory reallocation. This article gives a nice overview of the distinction between DLLs and arrays.
 
+IMPLEMENTED FUNCTIONS
+
 empty(self) -> bool
   Returns a boolean indicating whether the DLL is empty.
   Required time complexity: O(1).
@@ -104,3 +106,30 @@ reverse(self) -> None
   Required time complexity: O(n).
   Required space complexity: O(1).
   Returns: None.
+
+
+Spotify came to everyone's life as a saviour, no more having to wait for a download on 4shared to finish in order to listen to a song you like, or having to buy it on Itunes. Your friend also really likes it, but he has become annoyed with always having to scramble with the queue in order to listen to his favorite songs, so he has come to you, the master of computers. You are tasked with helping him to make his life easier using your tech-skills.
+
+The goal of this function is to simulate the reordering of certain songs within a music playlist.
+
+Function Description
+class Spotify_Music_Player:
+
+__init__(self, paid: bool=False) -> None
+  Attributes
+  self.songlist - a DLL containing songs. The DLL represents the order musics are to be played in. Any musics before the node self.playing have already been played.
+  self.playing - the node containing the song currently being played
+  self.paid - a bool indicating if the user has paid for ad blocking
+  Required time complexity: O(1).
+  Auxiliary space complexity: O(1).
+  Returns: None
+  \_IMPLEMENT the following class and class method
+
+def play_favorite_next(self, favorite_song, forward=True) -> None
+  This function moves the node from the queue containing favorite_song to be played after the current song. If the song is not in the queue, a node is added after the current song.
+  favorite_song: str: The next song to be played after self.playing.
+  forward: bool: This tells you where to remove the favorite song node from, in order to move it after the currently playing song, if already in the song list. If True, remove the latest node in the list that     contains the favorite song. If False, remove the first occurence of favorite song and move it to be after the playing node.
+  Note that the song currently being played isn't always the head of the song list.
+  Required time complexity: O(N).
+  Auxiliary space complexity: O(N).
+  Returns: None
