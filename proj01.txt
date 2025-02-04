@@ -1,0 +1,106 @@
+Assignment Overview
+Doubly linked lists (DLLs) are a fundamental data structure used to store sequential information. DLLs consist of a chain of nodes linked to one another by forward and backward references, such that one may traverse the chain from the head to the tail, or vice-versa. Each node stores a value, which may be a number, string, or more complex object.
+Traditional arrays provide a simpler means for storing sequential information, but come with a major drawback which DLLs avoid: arrays require contiguous blocks of memory, while DLLs may utilize memory wherever it is available. In settings where data is updated, manipulated or deleted frequently, DLLs outperform traditional arrays by avoiding the need for memory reallocation. This article gives a nice overview of the distinction between DLLs and arrays.
+
+empty(self) -> bool
+  Returns a boolean indicating whether the DLL is empty.
+  Required time complexity: O(1).
+  Required space complexity: O(1).
+  Returns: True if DLL is empty, else False.
+  Since this method is simply checking if the doubly linked list (DLL) is empty (likely by verifying if the head of the list is None or if the size of the list is 0), its space complexity is O(1).
+
+push(self, val: T, back: bool = True) -> None
+  Adds a Node containing val to the back (or front) of the DLL and updates size accordingly.
+  Required time complexity: O(1).
+  Required space complexity: O(1).
+  val: T: Value to be added to the DLL.
+  back: bool: If True, add val to the back of the DLL. If False, add to the front. Note that the default value is True.
+  Returns: None.
+  The act of pushing a value onto a DLL involves creating a new node and adjusting a couple of pointers (previous and next). It doesn't matter how long the DLL is; the process of adding a node requires a fixed amount of space. Hence, its space complexity remains O(1).
+
+pop(self, back: bool = True) -> None
+  Removes a Node from the back (or front) of the DLL and updates size accordingly.
+  In the case that the DLL is empty, pop does nothing.
+  Required time complexity: O(1).
+  Required space complexity: O(1).
+  back: bool: If True, remove from the back of the DLL. If False, remove from the front. Note that the default value is True.
+  Returns: None.
+  Popping a value from the DLL involves adjusting pointers and, in some implementations, deallocating the node's memory. Like the push method, the space it requires doesn't depend on the size of the DLL. Therefore, its space complexity is O(1).
+
+list_to_dll(self, source: list[T]) -> None
+  Creates a DLL from a standard Python list. If there are already nodes in the DLL, the DLL should be cleared and replaced by source.
+  Hint: clearing the DLL can be very simple. Think about what an empty DLL looks like (what are the values of head and tail?).
+  Required time complexity: O(n).
+  Required space complexity: O(n).
+  source: list[T]: Standard Python list from which to construct DLL.
+  Returns: None.
+  When transforming a standard Python list into a DLL, the method will likely iterate over each item in the source list and create a new node in the DLL. The number of nodes created will be proportional to the size of the source list. Thus, in the worst-case scenario, if the source list contains 'n' elements, the method will require space for 'n' nodes. Hence, its space complexity is O(n), meaning it requires linear space relative to the size of the input list.
+
+dll_to_list(self) -> list[T]
+  Creates a standard Python list from a DLL.
+  Required time complexity: O(n).
+  Required space complexity: O(n).
+  Returns: list[T] containing the values of the nodes in the DLL.
+
+_find_nodes(self, val: T, find_first: bool =False) -> List[Node]:
+  Construct list of Node with value val in the DLL and returns the associated Node object list
+  Required time complexity: O(n).
+  Required space complexity: O(n).
+  MUST BE CALLED FROM find AND find_all
+  val: T: Value to be found in the DLL.
+
+find_first: bool: if True find only the first element in the DLL, it false find all instances of the elements in the DLL.
+  Returns: list of Node objects in the DLL whose value is val. If val does not exist in the DLL, returns empty list.
+
+find(self, val: T) -> Node
+  Finds first Node with value val in the DLL and returns the associated Node object.
+  Requires call to _find_nodes
+  Failure to call _find_nodes will result in all testcase and manual points being forfeited for find.
+  Required time complexity: O(n).
+  Required space complexity: O(1).
+  val: T: Value to be found in the DLL.
+  Returns: first Node object in the DLL whose value is val. If val does not exist in the DLL, return None.
+
+find_all(self, val: T) -> list[Node]
+  Finds all Node objects with value val in the DLL and returns a standard Python list of the associated Node objects.
+  Requires call to _find_nodes
+  Failure to call _find_nodes will result in all testcase and manual points being forfeited for find_all.
+  Required time complexity: O(n).
+  Required space complexity: O(n).
+  val: T: Value to be found in the DLL.
+  Returns: standard Python list of all Node objects in the DLL whose value is val. If val does not exist in the DLL, returns an empty list.
+
+remove_node(self, to_remove: Node) -> None
+  Given a reference to a node in the linked list, remove it
+  MUST BE CALLED FROM remove AND remove_all
+  Will not be tested explicitly
+  Tests for remove and remove_all will ensure functionality
+  Required time complexity: O(1).
+  Required space complexity: O(1).
+  to_remove: Node: Node to be removed from the DLL.
+  Returns: None.
+  
+remove(self, val: T) -> bool
+  removes first Node with value val in the DLL.
+  MUST CALL remove_node
+  Required time complexity: O(n).
+  Required space complexity: O(1).
+  val: T: Value to be removed from the DLL.
+  Returns: True if a Node with value val was found and removed from the DLL, else False.
+
+remove_all(self, val: T) -> int
+  removes all Node objects with value val in the DLL. See note 7.
+  MUST CALL remove_node
+  Failure to call remove_node will result in all testcase and manual points being forfeited for remove_all.
+  Hint
+  Use of find_all allows this to be implemented in less than 10 lines.
+  Required time complexity: O(n).
+  Required space complexity: O(n).
+  val: T: Value to be removed from the DLL.
+  Returns: number of Node objects with value val removed from the DLL. If no node containing val exists in the DLL, returns 0.
+
+reverse(self) -> None
+  Reverses the DLL in-place by modifying all next and prev references of Node objects in DLL. Updates self.head and self.tail accordingly. See note 8.
+  Required time complexity: O(n).
+  Required space complexity: O(1).
+  Returns: None.
